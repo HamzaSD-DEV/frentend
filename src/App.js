@@ -1,18 +1,19 @@
 import React from 'react';
 
-import { Counter } from './features/counter/counter';
+import {Counter} from './features/counter/counter';
 import './App.css';
+import {Login} from "./features/login/login";
 
 function App() {
-  return (
-      <div className="App">
-        <header className="App-header">
-
-          <Counter />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <span>
+    return (
+        <div className="App">
+            <header className="App-header">
+                <Login/>
+                <Counter/>
+                <p>
+                    Edit <code>src/App.js</code> and save to reload.
+                </p>
+                <span>
           <span>Learn </span>
           <a
               className="App-link"
@@ -50,9 +51,9 @@ function App() {
             React Redux
           </a>
         </span>
-        </header>
-      </div>
-  );
+            </header>
+        </div>
+    );
 }
 
 export default App;
