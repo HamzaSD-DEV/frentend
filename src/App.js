@@ -1,11 +1,12 @@
 import React from 'react';
-import {Counter} from './features/counter/counter'
+import NavbarComponent from "./components/NavbarComponent";
 
 
 function App() {
     return (
         <div className="App">
-        <Counter/>
+            <NavbarComponent/>
+
         </div>
     );
 }
