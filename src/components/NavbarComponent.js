@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
     AppBar,
-    Avatar,
+    Avatar, Badge,
     Box,
     Button,
     Container,
@@ -12,10 +12,14 @@ import {
     Tooltip,
     Typography
 } from "@mui/material";
-import AdbIcon from '@mui/icons-material/Adb';
+import DriveEtaIcon from '@mui/icons-material/DriveEta';
 import MenuIcon from '@mui/icons-material/Menu';
+import MailIcon from '@mui/icons-material/Mail';
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
-const pages = ['Home', 'NewCars', 'Blog','Contact'];
+import {useSelector} from "react-redux";
+import {selectLogin} from "../features/login/loginSlice";
+const pages = ['Home', 'NewCars', 'Blog', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavbarComponent() {
@@ -37,30 +41,32 @@ function NavbarComponent() {
         setAnchorElUser(null);
     };
 
+    const isLogged = useSelector(selectLogin);
+    let a = isLogged ? 'flex' : 'none' ;
     return (
-        <AppBar position="static" sx={{ backgroundColor: 'black' }}>
-            <Container maxWidth="xl" >
-                <Toolbar disableGutters = "false">
-                    <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+        <AppBar position="static" sx={{backgroundColor: 'white', color: 'black'}}>
+            <Container maxWidth="xl">
+                <Toolbar disableGuttersy>
+                    <DriveEtaIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1,}}/>
                     <Typography
                         variant="h6"
                         noWrap
                         component="a"
                         href="/"
                         sx={{
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
+                            mr: 1,
+                            display: {xs: 'none', md: 'flex'},
                             fontFamily: 'monospace',
                             fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
+                            letterSpacing: '.1rem',
+                            color: 'black',
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        ALLCARS
                     </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                    <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
                         <IconButton
                             size="large"
                             aria-label="account of current user"
@@ -69,7 +75,7 @@ function NavbarComponent() {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            <MenuIcon />
+                            <MenuIcon/>
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -86,59 +92,84 @@ function NavbarComponent() {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                             sx={{
-                                display: { xs: 'block', md: 'none' },
-                                "& .MuiMenu-paper":
-                                    { backgroundColor: "black", }
+                                display: {xs: 'block', md: 'none'},
+
                             }}
                         >
                             {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu} >
-                                    <Typography textAlign="center" >{page}</Typography>
+                                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                    <Typography textAlign="center">{page}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
                     </Box>
-                    <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                    <DriveEtaIcon sx={{display: {xs: 'flex', md: 'none'}, mr: 1}}/>
                     <Typography
                         variant="h5"
                         noWrap
                         component="a"
-                        href=""
+                        href="/"
                         sx={{
                             mr: 2,
-                            display: { xs: 'flex', md: 'none' },
+                            display: {xs: 'flex', md: 'none'},
                             flexGrow: 1,
                             fontFamily: 'monospace',
                             fontWeight: 700,
-                            letterSpacing: '.3rem',
-                            color: 'inherit',
+                            letterSpacing: '.1rem',
+                            color: 'black',
                             textDecoration: 'none',
                         }}
                     >
-                        LOGO
+                        ALLCARS
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                    <Box sx={{
+                        flexGrow: 1,
+                        display: {xs: 'none', md: 'flex'},
+                        mr: 2,
+                    }}>
                         {pages.map((page) => (
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                sx={{my: 0.75, color: 'black', display: 'block'}}
                             >
                                 {page}
                             </Button>
                         ))}
                     </Box>
-                    <Button variant="contained"
+                    <Box sx={{ display: !isLogged ? {xs: 'none', md: 'flex'} : 'none'}}>
+                        <Button variant="contained" color="error"
+                        >Sell your car!</Button>
+                    </Box>
+                    <Box sx={{ display: !isLogged ? 'flex' : 'none' }}>
+                        <Button color="inherit">Login</Button>
+                    </Box>
+                    <Box sx={{ display: a }}>
+                        <Box sx={{minWidth: 130}}>
+                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                            <Badge badgeContent={4} color="error">
+                                <MailIcon />
+                            </Badge>
+                        </IconButton>
+                        <IconButton
+                            size="large"
+                            aria-label="show 17 new notifications"
+                            color="inherit"
 
-                    >Contained</Button>
-                    <Box sx={{ flexGrow: 0 }}>
+                        >
+                            <Badge badgeContent={17} color="error">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
+                        </Box>
+
                         <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                            <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
+                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
                             </IconButton>
                         </Tooltip>
                         <Menu
-                            sx={{ mt: '45px', color:'text'}}
+                            sx={{mt: '45px', color: 'text'}}
                             id="menu-appbar"
                             anchorEl={anchorElUser}
                             anchorOrigin={{
@@ -160,13 +191,11 @@ function NavbarComponent() {
                             ))}
                         </Menu>
                     </Box>
-                    <Box sx={{ flexGrow: 0 }}>
-                    <Button color="inherit">Login</Button>
-                    <Button color="inherit">Register</Button>
-                    </Box>
+
                 </Toolbar>
             </Container>
         </AppBar>
     );
 }
+
 export default NavbarComponent;
