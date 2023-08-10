@@ -19,6 +19,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import {useSelector} from "react-redux";
 import {selectLogin} from "../features/login/loginSlice";
+
+
 const pages = ['Home', 'NewCars', 'Blog', 'Contact'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -44,7 +46,7 @@ function NavbarComponent() {
     const isLogged = useSelector(selectLogin);
     let a = isLogged ? 'flex' : 'none' ;
     return (
-        <AppBar position="static" sx={{backgroundColor: 'white', color: 'black'}}>
+        <AppBar position="static" sx={{backgroundColor: 'white', color: 'black', zIndex: 1201}}>
             <Container maxWidth="xl">
                 <Toolbar disableGuttersy>
                     <DriveEtaIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1,}}/>

@@ -1,0 +1,15 @@
+.headercontainer {
+  background-color: darkslategrey;
+  background-image: url("../images/background2.jpg");
+  color: white;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  width: 100%;
+  background-size: cover;
+  .headertext {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-left: 10%;
+  }
+}

@@ -1,16 +1,18 @@
 import React from 'react';
 import NavbarComponent from "./components/NavbarComponent";
 import {Login} from "./features/login/login";
-import ResponsiveDrawer from "./components/Drawer";
-import MultiActionAreaCard from "./components/card";
+import Header from "./components/Header";
+import Drawer from "./components/Drawer";
+
+
 
 
 function App() {
     return (
         <div className="App">
             <NavbarComponent/>
-            <ResponsiveDrawer/>
-            <MultiActionAreaCard/>
+            <Header/>
+            <Drawer/>
             <Login/>
         </div>
     );
