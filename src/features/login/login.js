@@ -2,7 +2,6 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {logIn, logOut, selectLogin} from './loginSlice';
 import styles from '../counter/Counter.module.css';
-
 export function Login() {
     const login = useSelector(selectLogin);
     const dispatch = useDispatch();
