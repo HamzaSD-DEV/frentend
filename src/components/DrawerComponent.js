@@ -19,6 +19,7 @@ import {Container, Tooltip} from "@mui/material";
 import SearchInput from "./SearchInputComponent";
 import SearchIcon from '@mui/icons-material/Search';
 import {useEffect} from "react";
+import CheckboxesGroup from "./CheckboxesGroup";
 const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
@@ -142,6 +143,7 @@ export default function DrawerComponent({trigger}) {
                         </ListItem>
                     ))}
                 </List>
+                <CheckboxesGroup/>
             </Drawer>
         </Box>
     );
