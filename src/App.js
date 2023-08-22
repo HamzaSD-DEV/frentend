@@ -3,7 +3,7 @@ import NavbarComponent from "./components/NavbarComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import BodyComponent from "./components/BodyComponent";
 import DrawerComponent from "./components/DrawerComponent";
-import CheckboxesGroup from "./components/CheckboxesGroup";
+import './styles/app.scss'
 
 
 
@@ -14,7 +14,6 @@ function App() {
             <NavbarComponent/>
             <HeaderComponent/>
             <DrawerComponent/>
-            <CheckboxesGroup/>
             <BodyComponent/>
 
         </div>

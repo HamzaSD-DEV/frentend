@@ -3,9 +3,9 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function FreeSolo() {
+export default function SearchInputComponent() {
     return (
-        <Stack spacing={2} sx={{ width: 300 }}>
+        <Stack spacing={{ xs: 1, sm: 2 }} sx={{ minWidth: 200 }}>
             <Autocomplete
                 freeSolo
                 id="free-solo-2-demo"

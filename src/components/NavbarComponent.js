@@ -54,8 +54,24 @@ function NavbarComponent() {
     return (
         <Box>
             <AppBar position="fixed"
-                    sx={{backgroundColor: 'white', color: 'black', display: 'flex', flexDirection: 'row', zIndex: (theme: Theme)=>theme.zIndex.drawer}}>
-                <Box sx={{display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}}>
+                    sx={{
+                        width:'100%',
+                        backgroundColor: 'white',
+                        color: 'black',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        zIndex: (theme: Theme)=>theme.zIndex.drawer
+            }}
+            >
+                <Box
+                    sx={{
+                        display:'flex',
+                        flexDirection:'column',
+                        alignItems:'center',
+                        justifyContent:'center',
+                        paddingRight:0,
+                }}
+                >
                     <IconButton>
                         <ChevronRightIcon onClick={() => {
                             setTrigger((trigger) => trigger + 1);
@@ -63,30 +79,24 @@ function NavbarComponent() {
                     </IconButton>
                 </Box>
 
-                <Container maxWidth="xl">
+                <Container minWidth="xl"
+                           sx={{
+                               paddingLeft : 0,
+                           }}
+                >
 
-                    <Toolbar disableGuttersy>
+                    <Toolbar
+                             sx={{
+                                 maxWidth:{xs:'61.2%',md:1},
+                                 width:{xs:'61.2%',md:1},
+                                 display:'flex',
+                                 flexDirection:'row',
+                                 justifyContent: 'space-between',
+                                 paddingLeft : 0,
+                    }}
+                    >
 
-                        <DriveEtaIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1,}}/>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-                                mr: 1,
-                                display: {xs: 'none', md: 'flex'},
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.1rem',
-                                color: 'black',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            ALLCARS
-                        </Typography>
-
-                        <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>
+                        <Box sx={{ display: {xs: 'flex', md: 'none'}}}>
                             <IconButton
                                 size="large"
                                 aria-label="account of current user"
@@ -109,10 +119,12 @@ function NavbarComponent() {
                                     vertical: 'top',
                                     horizontal: 'left',
                                 }}
+                                disableScrollLock={true}
                                 open={Boolean(anchorElNav)}
                                 onClose={handleCloseNavMenu}
                                 sx={{
                                     display: {xs: 'block', md: 'none'},
+                                    zIndex:1300,
 
                                 }}
                             >
@@ -123,16 +135,46 @@ function NavbarComponent() {
                                 ))}
                             </Menu>
                         </Box>
-                        <DriveEtaIcon sx={{display: {xs: 'flex', md: 'none'}, mr: 1}}/>
+                        <Box
+                            sx={{
+                                display:{xs: 'none', md: 'flex'},
+                                flexDirection : 'row',
+                            }}
+                        >
+                            <DriveEtaIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1,}}/>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="a"
+                                href="/"
+                                sx={{
+                                    mr: 1,
+                                    display: {xs: 'none', md: 'flex'},
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.1rem',
+                                    color: 'black',
+                                    textDecoration: 'none',
+                                }}
+                            >
+                                ALLCARS
+                            </Typography>
+                        </Box>
+                        <Box
+                            sx={{
+                                display:'flex',
+                                flexDirection : 'row',
+                            }}
+                        >
+                        <DriveEtaIcon sx={{display: {xs: 'flex', md: 'none'}}}/>
                         <Typography
                             variant="h5"
                             noWrap
                             component="a"
                             href="/"
                             sx={{
-                                mr: 2,
+
                                 display: {xs: 'flex', md: 'none'},
-                                flexGrow: 1,
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.1rem',
@@ -142,6 +184,7 @@ function NavbarComponent() {
                         >
                             ALLCARS
                         </Typography>
+                        </Box>
                         <Box sx={{
                             flexGrow: 1,
                             display: {xs: 'none', md: 'flex'},
