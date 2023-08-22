@@ -88,7 +88,7 @@ function NavbarComponent() {
                     <Toolbar
                              sx={{
                                  maxWidth:{xs:'61.2%',md:1},
-                                 width:{xs:'61.2%',sm:'72%',md:1,lg:1},
+                                 width:{xs:'61.2%',sm:'72%',md:'80%',lg:1},
                                  display:'flex',
                                  flexDirection:'row',
                                  justifyContent: 'space-between',
