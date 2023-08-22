@@ -78,8 +78,7 @@ export default function DrawerComponent({trigger}) {
                     <Box sx={{
                         display: 'flex',
                         justifyContent: 'space-between',
-                        p: 0,
-                        m: 0.5,
+
                     }}>
 
                             <SearchInput sx={{
@@ -90,7 +89,7 @@ export default function DrawerComponent({trigger}) {
                                     color="inherit"
                                     aria-label="open drawer"
                                     onClick={handleDrawerOpen}
-                                    sx={{mr: 2, ...(open && {display: 'none'})}}
+                                    sx={{...(open && {display: 'none'})}}
                                 >
                                     <SearchIcon fontSize="large"/>
                                 </IconButton>
@@ -101,8 +100,6 @@ export default function DrawerComponent({trigger}) {
             </AppBar>
             <Drawer
                 sx={{
-                    width: drawerWidth,
-                    flexShrink: 0,
                     '& .MuiDrawer-paper': {
                         width: drawerWidth,
                         boxSizing: 'border-box',
