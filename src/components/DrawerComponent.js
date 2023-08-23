@@ -75,26 +75,7 @@ export default function DrawerComponent({trigger}) {
             <CssBaseline/>
             <AppBar position="static" open={open} sx={{backgroundColor: 'white', color: 'black'}}>
                 <Container maxWidth="xl" sx={{ display: 'flex' ,justifyContent: 'center',}}>
-                    <Box sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
 
-                    }}>
-
-                            <SearchInput sx={{
-                                paddingLeft:1,
-                            }}/>
-                            <Tooltip title="Search">
-                                <IconButton
-                                    color="inherit"
-                                    aria-label="open drawer"
-                                    onClick={handleDrawerOpen}
-                                    sx={{...(open && {display: 'none'})}}
-                                >
-                                    <SearchIcon fontSize="large"/>
-                                </IconButton>
-                            </Tooltip>
-                    </Box>
 
                 </Container>
             </AppBar>

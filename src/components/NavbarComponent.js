@@ -14,7 +14,7 @@ import {
     Tooltip,
     Typography
 } from "@mui/material";
-import DriveEtaIcon from '@mui/icons-material/DriveEta';
+
 import MenuIcon from '@mui/icons-material/Menu';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -24,8 +24,12 @@ import {selectLogin} from "../features/login/loginSlice";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import DrawerComponent from "./DrawerComponent";
 import { Theme } from "@mui/material/styles";
+import "../styles/navbar.scss"
+import logo from "../images/logo-no-background.png";
+import SearchIcon from "@mui/icons-material/Search";
+import SearchInput from "./SearchInputComponent";
 
-const pages = ['Home', 'NewCars', 'Blog', 'Contact'];
+const pages = ['Today\'s Deals', 'Fast Service', 'Big Deals'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function NavbarComponent() {
@@ -63,38 +67,35 @@ function NavbarComponent() {
                         zIndex: (theme: Theme)=>theme.zIndex.drawer
             }}
             >
-                <Box
-                    sx={{
-                        display:'flex',
-                        flexDirection:'column',
-                        alignItems:'center',
-                        justifyContent:'center',
-                        paddingRight:0,
-                }}
-                >
-                    <IconButton>
-                        <ChevronRightIcon onClick={() => {
-                            setTrigger((trigger) => trigger + 1);
-                        }}/>
-                    </IconButton>
-                </Box>
 
-                <Container minWidth="xl"
-                           sx={{
-                               paddingLeft : 0,
-                           }}
+
+                <Container maxWidth="xl" disableGutters={true}
+
                 >
 
-                    <Toolbar
+                    <Toolbar disableGutters={true}
                              sx={{
-                                 // maxWidth:{xs:'61.2%',md:1},
-                                 // width:{xs:'61.2%',sm:'72%',md:'80%',lg:1},
-                                 display:'flex',
+                                 display: {xs: 'flex', md: 'flex'},
                                  flexDirection:'row',
                                  justifyContent: 'space-between',
-                                 paddingLeft : 0,
+
                     }}
                     >
+                        <Box
+                            sx={{
+                                display:'flex',
+                                flexDirection:'column',
+                                alignItems:'center',
+                                justifyContent:'center',
+                                paddingRight:0,
+                            }}
+                        >
+                            <IconButton>
+                                <ChevronRightIcon onClick={() => {
+                                    setTrigger((trigger) => trigger + 1);
+                                }}/>
+                            </IconButton>
+                        </Box>
 
                         <Box sx={{ display: {xs: 'flex', md: 'none'}}}>
                             <IconButton
@@ -137,53 +138,17 @@ function NavbarComponent() {
                         </Box>
                         <Box
                             sx={{
-                                display:{xs: 'none', md: 'flex'},
-                                flexDirection : 'row',
+                                    display: {xs: 'none', md: 'flex'},
+                                pr:2,pl:2
                             }}
                         >
-                            <DriveEtaIcon sx={{display: {xs: 'none', md: 'flex'}, mr: 1,}}/>
-                            <Typography
-                                variant="h6"
-                                noWrap
-                                component="a"
-                                href="/"
-                                sx={{
-                                    mr: 1,
-                                    display: {xs: 'none', md: 'flex'},
-                                    fontFamily: 'monospace',
-                                    fontWeight: 700,
-                                    letterSpacing: '.1rem',
-                                    color: 'black',
-                                    textDecoration: 'none',
-                                }}
-                            >
-                                ALLCARS
-                            </Typography>
+                            <img className={"logo"} src={logo} alt="Logo" />
+
                         </Box>
                         <Box
-                            sx={{
-                                display:'flex',
-                                flexDirection : 'row',
-                            }}
+                            sx={{display: {xs: 'flex', md: 'none'}}}
                         >
-                        <DriveEtaIcon sx={{display: {xs: 'flex', md: 'none'}}}/>
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="/"
-                            sx={{
-
-                                display: {xs: 'flex', md: 'none'},
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.1rem',
-                                color: 'black',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            ALLCARS
-                        </Typography>
+                            <img className={"logo"} src={logo} alt="Logo" />
                         </Box>
                         <Box sx={{
                             flexGrow: 1,
@@ -200,11 +165,35 @@ function NavbarComponent() {
                                 </Button>
                             ))}
                         </Box>
-                        <Box sx={{display: !isLogged ? {xs: 'none', md: 'flex'} : 'none',pr:2}}>
-                            <Button variant="contained" color="error"
-                            >Sell your car!</Button>
+
+                        <Box sx={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            width:'35%'
+                        }}>
+
+                            <SearchInput sx={{width:'100%',
+                                p:1,
+                            }}/>
+
+                            <Tooltip title="Search">
+                                <IconButton
+                                    color="inherit"
+                                    aria-label="open drawer"
+                                    onClick={() => {
+                                        setTrigger((trigger) => trigger + 1);
+                                    }}
+                                >
+                                    <SearchIcon fontSize="large"/>
+                                </IconButton>
+                            </Tooltip>
                         </Box>
-                        <Box sx={{display: !isLogged ? 'flex' : 'none'}}>
+
+                        <Box sx={{display: !isLogged ? {xs: 'none', md: 'flex'} : 'none',pr:2,pl:2}}>
+                            <Button variant="contained" color="error"
+                            >ADD YOUR BUSINESS!</Button>
+                        </Box>
+                        <Box sx={{display: !isLogged ? 'flex' : 'none',pr:2,pl:2}}>
                             <Button color="inherit">Login</Button>
                         </Box>
                         <Box sx={{display: a}}>
